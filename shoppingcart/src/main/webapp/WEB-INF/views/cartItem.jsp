@@ -199,47 +199,5 @@ js/bootstrap.min.js"></script>
 </div>
 <br>
 </body>
-<%--
-  Created by IntelliJ IDEA.
-  User: syelgoi
-  Date: 7/8/2022
-  Time: 2:52 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
 
-<%--<html>--%>
-<%--<head>--%>
-<%--    <title>CART Items</title>--%>
-<%--</head>--%>
-<%--<body>--%>
-<%--<table>--%>
-<%--    <tr>--%>
-<%--        &lt;%&ndash;    <th>CartItem ID</th>&ndash;%&gt;--%>
-<%--        <th>CartItem Id</th>--%>
-<%--        <th>Cart Id</th>--%>
-<%--        <th>Product ID</th>--%>
-<%--        <th>Product Name</th>--%>
-<%--        <th>Quantity</th>--%>
-<%--        <th>Price</th>--%>
-<%--    </tr>--%>
-<%--    &lt;%&ndash;@elvariable id="cartItemList" type="java.util.List"&ndash;%&gt;--%>
-<%--    <c:forEach var="item" items="${cartItemList}">--%>
-<%--        <tr>--%>
-<%--                &lt;%&ndash; <td>${item.cartItemId}</td>&ndash;%&gt;--%>
-<%--                &lt;%&ndash;            <td>${item.productId}</td>&ndash;%&gt;--%>
-<%--            <td>${item.id}</td>--%>
-<%--            <td>${item.cartId}</td>--%>
-<%--            <td>${item.productId}</td>--%>
-<%--            <td>${item.name}</td>--%>
-<%--            <td>${item.productQuantity}</td>--%>
-<%--            <td>${item.price}</td>--%>
-<%--                &lt;%&ndash; <td>${item.productId}</td>&ndash;%&gt;--%>
-<%--        </tr>--%>
-<%--    </c:forEach>--%>
-<%--</table>--%>
-<%--&lt;%&ndash;<p>${hello}</p>&ndash;%&gt;--%>
 
-<%--&lt;%&ndash;<a href="/fetchAllCartItems{cartId}">Check Out</a><br><br>&ndash;%&gt;--%>
-<%--</body>--%>
-<%--</html>--%>

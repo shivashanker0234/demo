@@ -33,26 +33,23 @@ public class CartItemController {
         final Integer cartId = cartItemService.getCartId(emailAddress);
         final List<CartItem> cartItemList = cartItemService.getAllCartItems(emailAddress);
         final Product product = productService.getProductById(productId);
-        
-            if (cartItemService.isProductExistInCart(cartId, productId)) {
-//            final String cartId=cartItemService.getCartId(emailAddress);
-                final CartItem cart = cartItemService.getCartItemById(cartId, productId);
-                final Integer quantity = cart.getProductQuantity() + 1;
-                final Integer productPrice = product.getPrice() * quantity;
-                cartItemService.updateShoppingCart(cartId, productId, quantity, productPrice);
-                //          Integer productQuantity=cartItemList.get(CartItem).getProductQuantity()
-                logger.info("Updated Product Quantity and Price");
-                // System.out.println(cartId + " " + productId + " " + getQuantity() + " " + cart.getPrice());
-                logger.info("product" + productPrice + "quantity" + quantity + "");
-                logger.info("Product added to cart successfully");
-                //  return "redirect:/fetchAllCartItems";
 
+        if (cartItemService.isProductExistInCart(cartId, productId)) {
+            //final String cartId=cartItemService.getCartId(emailAddress);
+            final CartItem cart = cartItemService.getCartItemById(cartId, productId);
+            final Integer quantity = cart.getProductQuantity() + 1;
+            final Integer productPrice = product.getPrice() * quantity;
+            cartItemService.updateShoppingCart(cartId, productId, quantity, productPrice);
+            //Integer productQuantity=cartItemList.get(CartItem).getProductQuantity()
+            logger.info("Updated Product Quantity and Price");
+            // System.out.println(cartId + " " + productId + " " + getQuantity() + " " + cart.getPrice());
+            logger.info("product price updated" + productPrice + "quantity updated" + quantity + "");
+            logger.info("Product updated to cart successfully");
 
-//            cartItemService.addCartItem(cartId, productId, product);
-            } else {
-                cartItemService.addCartItem(cartId, productId, product);
-//            model.addAttribute("");
-            }
+        } else {
+            cartItemService.addCartItem(cartId, productId, product);
+            logger.info("Product added to cart successfully");
+        }
 
         model.addAttribute("emailAddress", emailAddress);
         model.addAttribute("successfulMessage", "Product added to cart successfully");
@@ -68,35 +65,24 @@ public class CartItemController {
 
     @GetMapping("/fetchAllCartItems")
     public String getAllCartItems(final Model model, final HttpSession session) {
-//         cartItemService.getCartId(emailAddress)
         final String emailAddress = (String) session.getAttribute("emailAddress");
         final SignUp signUp = signUpService.fetchUser(emailAddress);
         final Integer cartId = cartItemService.getCartId(emailAddress);
-//        final Integer soloPrice = productService.getProductPrice(productId);
-        //cartItemService.updateShoppingCart(cartId, productId, productQuantity, price);
         final List<CartItem> cartItemList = cartItemService.getAllCartItems(emailAddress);
         if (cartItemList.size() == 0) {
             model.addAttribute("emptyMessage", "Your cart is Empty ! Add Products ?");
             return "error";
         }
-        //final Product product = productService.getProductById(productId);
         model.addAttribute("signUp", signUp);
         model.getAttribute("emailAddress");
-//        model.addAttribute("productPrice", price);
-//        model.addAttribute("price", soloPrice);
         model.addAttribute("cartItemList", cartItemList);
         model.addAttribute("totalItemsQuantity", cartItemService.totalItemsQuantity(cartId));
         model.addAttribute("totalItemsPrice", cartItemService.totalItemsPrice(cartId));
-//        model.addAttribute("totalQuantity",cartItemL)
-        //  model.addAttribute("cartId", cartId);
-//        System.out.println("This is cart item list");
-//        System.out.println(cartItemList);
-        // model.addAttribute("cartItemList", cartItemList);
         return "cartItem";
     }
 
     @GetMapping("/productDetails/{productId}")
-    public String productDetails(final Model model, @PathVariable("productId") final String productId, HttpSession session) {
+    public String productDetails(final Model model, @PathVariable("productId") final String productId,final HttpSession session) {
         final String emailAddress = (String) session.getAttribute("emailAddress");
         final Product product = productService.getProductById(productId);
         model.addAttribute("product", product);
@@ -138,47 +124,17 @@ public class CartItemController {
         logger.info("Product quantity decreased by 1");
         return "redirect:/fetchAllCartItems";
     }
-
     @GetMapping("/remove/{cartItemId}")
     public String removeCartItem(@PathVariable("cartItemId") final Integer cartItemId) throws Exception {
         cartItemService.removeCartItem(cartItemId);
         return "redirect:/fetchAllCartItems";
     }
 
-//    @GetMapping("/checkOut")
-//    public String CheckOut(final Model model, HttpSession session) {
-//
-//        final String emailAddress = (String) session.getAttribute("emailAddress");
-//        final SignUp user = signUpService.fetchUser(emailAddress);
-//        final int cartId = cartItemService.getCartId(emailAddress);
-//        final List<CartItem> cartItemList = cartItemService.getAllCartItems(emailAddress);
-//        final int amount = cartItemService.totalItemsPrice(cartId);
-//        final int totalItemsQuantity=cartItemService.totalItemsQuantity(cartId);
-//        final int totalItemsPrice=cartItemService.totalItemsPrice(cartId);
-//        model.addAttribute("cartItemList", cartItemList);
-//        model.addAttribute("user", user);
-//        model.addAttribute("amount", amount);
-//        model.addAttribute("totalItemsQuantity", totalItemsQuantity);
-//        model.addAttribute("totalItemsPrice", totalItemsPrice);
-//        // model.getAttribute("emailAddress");
-//        return "checkOut";
-//
-//    }
+    @GetMapping("/adminProductDetails/{productId}")
+    public String adminProductDetails(final Model model, @PathVariable("productId") final String productId) {
+        final Product product = productService.getProductById(productId);
+        model.addAttribute("product", product);
+        return "adminProductDetails";
+
+    }
 }
-
-//    @GetMapping("/cartId/{emailAddress}")
-//    public String getCartId(Model model, @PathVariable("emailAddress") final String emailAddress) {
-//        final Integer cartId = cartItemService.getCartId(emailAddress);
-//
-//        //  model.addAttribute("emailAddress", emailAddress);
-//        model.getAttribute("emailAddress");
-//        return "cart";
-//    }
-
-
-//    public String addToCart(final Model model, @PathVariable("id") final String productId, @RequestParam("emailAddress") final String emailAddress) {
-//        Product product=productService.getProductById(productId);
-//        cartService.addToCart(productId,emailAddress,product);
-//        //model.addAttribute()
-//        return "index";
-//    }

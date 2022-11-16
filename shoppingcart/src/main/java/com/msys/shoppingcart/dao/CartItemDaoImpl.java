@@ -73,6 +73,7 @@ public class CartItemDaoImpl implements CartItemDao {
                         resultSet.getInt("price"),
                         resultSet.getString("name")));
     }
+
     @Override
     public void updateShoppingCart(final Integer cartId, final String productId, final Integer quantity, final Integer productPrice) {
         final String sql = "update cartItem set productQuantity ='" + quantity + "' and price ='" + productPrice + "' " +
@@ -80,6 +81,7 @@ public class CartItemDaoImpl implements CartItemDao {
 //        jdbcTemplate.update(sql);
         jdbcTemplate.update(sql);
     }
+
     @Override
     public int totalItemsQuantity(final Integer cartId) {
         final String sql = "select sum(productQuantity) from cartItem where cartId='" + cartId + "'";

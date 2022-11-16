@@ -53,15 +53,13 @@
             column-gap: 30px;
         }
     </style>
+    <H2 align="center" > Product Table</H2>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-primary">
-    <a class="navbar-brand" style="color: #FFFFFF">ShoppingCart</a>
-</nav>
-<form action="addProduct" method="POST" name="addProduct" class="container" enctype="multipart/form-data">
-    <%--<form name="loginForm" action="signUp"  method="POST">--%>
-    <table align="center" border="0" cellpadding="8" cellspacing="2">
 
+<form action="addProduct" method="POST" name="addProduct" class="container" enctype="multipart/form-data">
+
+    <table align="center" border="0" cellpadding="8" cellspacing="2">
         <tr>
             <td>Product ID:</td>
             <td><label for="productId"></label>
@@ -108,43 +106,5 @@
         </tr>
     </table>
 </form>
-<%--<form action="product" method="POST" name="productList">--%>
-<%--    <table align="center" border="0" cellpadding="8" cellspacing="2">--%>
-
-<%--        &lt;%&ndash;    <tr>&ndash;%&gt;--%>
-<%--        &lt;%&ndash;        <td>Prodcut Image</td>&ndash;%&gt;--%>
-<%--        &lt;%&ndash;        <td><img&ndash;%&gt;--%>
-<%--        &lt;%&ndash;                src="<c:url value="/resource/images/products/${Id}.jpg"/>"&ndash;%&gt;--%>
-<%--        &lt;%&ndash;                width="40%" alt="${Name}"/></td>&ndash;%&gt;--%>
-<%--        &lt;%&ndash;    </tr>&ndash;%&gt;--%>
-<%--        <tr>--%>
-<%--            <td>Product ID</td>--%>
-<%--            <td>${id}</td>--%>
-<%--        </tr>--%>
-<%--        <tr>--%>
-<%--            <td>Product Name</td>--%>
-<%--            <td>${name }</td>--%>
-<%--        </tr>--%>
-<%--        <tr>--%>
-<%--            <td>Product Color</td>--%>
-<%--            <td>${color }</td>--%>
-<%--        </tr>--%>
-
-<%--        <tr>--%>
-<%--            <td>Product Image</td>--%>
-<%--            <td><img--%>
-<%--                    src="<c:url value="/resource/images/products/${Id}.jpg"/>"--%>
-<%--                    width="40%" alt="${image}"/></td>--%>
-<%--        </tr>--%>
-<%--        <tr>--%>
-<%--            <td>Product Price</td>--%>
-<%--            <td>${price }</td>--%>
-<%--        </tr>--%>
-<%--        <tr>--%>
-<%--            <td><input id="product" value="Upload" type="submit"></td>--%>
-
-<%--        </tr>--%>
-<%--    </table>--%>
-<%--</form>--%>
 </body>
 </html>

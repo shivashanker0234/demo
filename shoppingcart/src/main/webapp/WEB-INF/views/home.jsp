@@ -104,12 +104,8 @@
     .dropdown:hover .dropbtn {
         background-color: #3e8e41;
     }
-
 </style>
 
-
-<%--</head>--%>
-<%--<body>--%>
 <nav class="navbar navbar-light bg-primary justify-content-between">
     <div class="dropdown">
         <button class="dropbtn">Menu</button>
@@ -125,18 +121,12 @@
     <form class="form-inline">
         <p class="mr-4" style="color: #FFFFFF"><b>${emailAddress}</b></p>
 
-<%--        <form action="<s:url value="searchProduct"/>">--%>
+        <%--        <form action="<s:url value="searchProduct"/>">--%>
         <form action="searchProduct" method="get">
             <input type="text" name="searchProduct" placeholder="search">
             <button type="submit">search</button>
-          </form>
-        <%--       --%>
-        <%--        <input  class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searchProduct"--%>
-        <%--               name="searchProduct" style="">--%>
-        <%--        <button class="btn btn-outline-success my-2 my-sm-0" style="size: auto"  type="submit">--%>
-        <%--            <a style="color: #FFFFFF" href="searchProduct" >Search </a>--%>
-        <%--        </button>--%>
-        <%--       --%>
+        </form>
+
 
         <button class="btn btn-outline-success my-2 my-sm-0">
             <a style="color:white" type="submit" href="${pageContext.request.contextPath}/fetchAllCartItems">Cart</a>
@@ -159,11 +149,7 @@
                         <p><span>${item.price}</span>/- Rupees</p>
                         <p><span>${item.color}</span> Color</p>
                         <p><span>${item.description}</span></p>
-                            <%--                        <h3>${list}</h3>--%>
-                            <%--                        <p><span>${item.productId}</span> Model </p>--%>
-                            <%--                        <p><span>${item.price}</span>/- Rupees</p>--%>
-                            <%--                        <p><span>${item.color}</span> Color</p>--%>
-                            <%--                        <p><span>${item.description}</span></p>--%>
+
 
                         <button class="btn btn-primary">
                             <a style="color: #FFFFFF "

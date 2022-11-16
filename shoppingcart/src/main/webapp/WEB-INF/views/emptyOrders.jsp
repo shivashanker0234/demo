@@ -73,7 +73,7 @@
             <a href="logout">Log Out</a>
         </div>
     </div>
-    <a class="navbar-brand" style="color: white">Shopping Cart</a>
+    <a class="navbar-brand" style="color: white">SmartMart</a>
     <form class="form-inline">
         <p class="mr-4" style="color: #FFFFFF"><b>${emailAddress}</b></p>
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

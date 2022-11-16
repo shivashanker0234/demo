@@ -3,32 +3,29 @@ package com.msys.shoppingcart.controller;
 import com.msys.shoppingcart.model.Admin;
 import com.msys.shoppingcart.service.AdminService;
 import lombok.AllArgsConstructor;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @Controller
 @AllArgsConstructor
 public class AdminController {
     private AdminService adminService;
+    private final Logger logger = Logger.getLogger(AdminController.class);
 
-    @GetMapping("/adminLogin")
-    public String loginProcess(final Model model, final Admin admin, HttpServletRequest request) {
-        final boolean isValid = adminService.login(admin);
-        if (isValid) {
-
-            final String id = (String) request.getSession().getAttribute("id");
-            if (id == null) {
-                request.getSession().setAttribute("id", admin.getId());
-            }
-            model.addAttribute("id", admin.getId());
-            return "product";
-
-        } else
-            model.addAttribute("message", "Id or Password Wrong");
-        return "admin";
+    @PostMapping("/adminLogin")
+    public String loginProcess(final Model model, final Admin admin, final HttpServletRequest request) {
+        final Admin adminLogin = adminService.login(admin);
+        if (adminLogin != null) {
+            logger.info("admin login successful");
+            request.getSession().setAttribute("adminId", admin.getId());
+            return "adminWelcome";
+        }
+        logger.warn("Invalid Credentials");
+        model.addAttribute("message", "Invalid Credentials");
+        return "adminWelcome";
     }
 }

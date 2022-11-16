@@ -23,7 +23,6 @@ public class UserDaoImpl implements UserDao {
     final JdbcTemplate jdbcTemplate;
     final AESAlgorithm aesAlgorithm;
     final DataSource datasource;
-    Key key;
 
     public UserDaoImpl(final JdbcTemplate jdbcTemplate, final AESAlgorithm aesAlgorithm, final DataSource datasource) {
         this.jdbcTemplate = jdbcTemplate;

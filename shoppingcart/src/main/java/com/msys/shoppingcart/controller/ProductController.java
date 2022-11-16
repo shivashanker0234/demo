@@ -49,7 +49,6 @@ public class ProductController {
     public String getAllProducts(final Model model) {
         final List<Product> listProduct = productService.getAllProducts();
         model.addAttribute("listProduct", listProduct);
-//        model.addAttribute("cartId",);
         return "home";
     }
 
@@ -76,6 +75,13 @@ public class ProductController {
 
     }
 
+    @GetMapping("/fetchAdminProducts")
+    public String fetchAdminProducts(final Model model) {
+        final List<Product> listProduct = productService.getAllProducts();
+        model.addAttribute("listProduct", listProduct);
+        return "adminProducts";
+    }
+
     @GetMapping("/searchProduct")
     public String searchProduct(final Model model, @RequestParam("name") final String name) {
         final List<Product> searchList = productService.getAllProductsByName(name);
@@ -85,8 +91,8 @@ public class ProductController {
             if (product.getName().equalsIgnoreCase(name)) {
                 list.add(product);
                 model.addAttribute("list", list);
-            }else{
-                model.addAttribute("notFound","Product not found");
+            } else {
+                model.addAttribute("notFound", "Product not found");
             }
         }
         return "foundProducts";

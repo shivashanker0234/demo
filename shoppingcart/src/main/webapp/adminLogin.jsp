@@ -107,7 +107,7 @@
 <%--<nav class="navbar navbar-expand-lg navbar-light bg-primary">--%>
 <%--    <a class="navbar-brand" style="color: white">ShoppingCart</a>--%>
 <%--</nav>--%>
-<form action="adminLogin" class="container" method="POST" name="loginForm">
+<form action="adminLogin" class="container" method="post" name="loginForm">
     <div class="center">
         <h2>Admin Login</h2><br>
         <label for="Admin ID"></label>

@@ -53,12 +53,50 @@
             column-gap: 30px;
         }
     </style>
+    <script type="text/javascript">
+
+        function testValidations() {
+            let productId = document.forms["productForm"]["productId"].value;
+            let productName = document.forms["productForm"]["productName"].value;
+            let productColor = document.forms["productForm"]["color"].value;
+            let productPrice = document.forms["productForm"]["price"].value;
+            let productDescription = document.forms["productForm"]["description"].value;
+            let productDetails = document.forms["productForm"]["details"].value;
+            if (productId === '') {
+                alert('product Id is required');
+                return false;
+            }
+
+            if (productName === '') {
+                alert("Product name is required")
+                return false;
+            }
+            if (productColor === '') {
+                alert("Colour of product is required")
+                return false;
+            }
+            if (productPrice === '') {
+                alert("Price is required")
+                return false;
+            }
+            if (productDescription === '') {
+                alert("Description is required")
+                return false;
+            }
+            if (productDetails === '') {
+                alert("Details is required")
+                return false;
+            } else {
+                document.forms["productForm"].submit();
+            }
+        }
+    </script>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-primary">
-    <a class="navbar-brand" style="color: #FFFFFF">ShoppingCart</a>
-</nav>
-<form action="addProduct" method="POST" name="addProduct" class="container" enctype="multipart/form-data">
+<%--<nav class="navbar navbar-expand-lg navbar-light bg-primary">--%>
+<%--    <a class="navbar-brand" style="color: #FFFFFF">ShoppingCart</a>--%>
+<%--</nav>--%>
+<form action="addProduct" method="POST" name="productForm" class="container" enctype="multipart/form-data">
     <%--<form name="loginForm" action="signUp"  method="POST">--%>
     <table align="center" border="0" cellpadding="8" cellspacing="2">
 
@@ -71,8 +109,8 @@
 
         <tr>
             <td>Product Name:</td>
-            <td><label for="name"></label>
-                <input type="text" id="name" name="name"/>
+            <td><label for="productName"></label>
+                <input type="text" id="productName" name="productName"/>
         </tr>
         <tr>
             <td> Product Color:</td>
@@ -104,7 +142,7 @@
             </td>
         </tr>
         <tr>
-            <td><input id="product" value="Add Product" type="submit"></td>
+            <td><input id="product" value="Add Product" type="submit" onclick="return testValidations()"></td>
         </tr>
     </table>
 </form>
